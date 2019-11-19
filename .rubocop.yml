@@ -41,6 +41,8 @@
 #
 # We want to encourage testing, but it can be verbose in the early stages.
 # So we'll give you a break. As you learn, try removing the next two sections.
+Documentation:
+  Enabled: false
 
 Metrics/LineLength:
   Exclude:
@@ -52,6 +54,10 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
+
+AllCops:
+  Exclude:
+    - 'spec/spec_helper'
 
 # Code Style
 # ==========
@@ -467,11 +473,11 @@ TrailingWhitespace:
   Enabled: false
 UnlessElse:
   Enabled: false
-UnneededCapitalW:
+RedundantCapitalW:
   Enabled: false
-UnneededInterpolation:
+RedundantInterpolation:
   Enabled: false
-UnneededPercentQ:
+RedundantPercentQ:
   Enabled: false
 VariableInterpolation:
   Enabled: false
