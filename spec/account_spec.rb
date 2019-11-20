@@ -4,15 +4,13 @@ describe Account do
 
   subject(:account) { described_class.new }
 
+  # let(:transaction) { double(:transaction, new: transaction) }
+  # let(:transaction_class) { double(:transaction_class, new: transaction) }
+
   describe '#deposit' do
     it 'should update the balance correctly' do
       account.deposit(500, '18/11/19')
       expect(account.balance).to eq 500
-    end
-
-    it 'can store a date when a deposit is made' do
-      account.deposit(500, '18/11/19')
-      expect(account.transactions).to eq [{ :deposit => ['18/11/19', 500, 500] }]
     end
 
     it 'raises an error message if trying to make a deposit >= 0' do
@@ -22,7 +20,7 @@ describe Account do
 
   describe '#withdrawal' do
     it 'should update the balance correctly' do
-      account.deposit(500, "18/11/2019")
+      account.deposit(500, "18/11/2019", transaction)
       account.withdrawal(100, "19/11/2019")
       expect(account.balance).to eq 400
     end
@@ -30,7 +28,7 @@ describe Account do
     it 'can store the date of the withdrawal' do
       account.deposit(500, "18/11/2019")
       account.withdrawal(100, "19/11/2019")
-      expect(account.transactions).to eq [{ :deposit => ["18/11/2019", 500, 500] }, { :withdrawal => ["19/11/2019", 100, 400] }]
+      expect(account.withdrawals).to eq [["19/11/2019", 100, 400]]
     end
 
     it 'raises an error if you withdraw more than the balance' do
