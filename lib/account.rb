@@ -17,6 +17,8 @@ class Account
 
   def withdrawal(money, date)
     return 'Insufficient funds.' unless money <= @balance
+    return 'Please enter an amount greater than 0.' unless money.positive?
+
 
     @balance -= money
     @transactions << { :withdrawal => [date, money, balance] }

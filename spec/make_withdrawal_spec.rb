@@ -22,4 +22,10 @@ describe 'making a withdrawal' do
     expect(account.withdrawal(600, '19/11/19')).to eq 'Insufficient funds.'
   end
 
+  it 'raises an error if withdrawal is not positive integer' do
+    account = Account.new
+    account.deposit(500, "18/11/2019")
+    expect(account.withdrawal(-100, "19/11/2019")).to eq 'Please enter an amount greater than 0.'
+  end
+
 end
