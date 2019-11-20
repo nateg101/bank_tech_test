@@ -12,7 +12,7 @@ describe ' making a deposit' do
   it 'can store a date when a deposit is made' do
     account = Account.new
     account.deposit(500, '18/11/19')
-    expect(account.transactions).to eq [[500, '18/11/19']]
+    expect(account.transactions).to eq [{ :deposit => ['18/11/19', 500, 500] }]
   end
 
   it 'raises an error message if trying to make a deposit >= 0' do

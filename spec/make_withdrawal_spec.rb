@@ -13,7 +13,7 @@ describe 'making a withdrawal' do
     account = Account.new
     account.deposit(500, "18/11/2019")
     account.withdrawal(100, "19/11/2019")
-    expect(account.transactions).to include [100, "19/11/2019"]
+    expect(account.transactions).to eq [{ :deposit => ["18/11/2019", 500, 500] }, { :withdrawal => ["19/11/2019", 100, 400] }]
   end
 
   it 'raises an error if you withdraw more than the balance' do

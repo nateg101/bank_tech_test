@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-11-20T07:38:01+00:00">2019-11-20T07:38:01+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-11-20T08:08:20+00:00">2019-11-20T08:08:20+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -53,7 +53,7 @@
       <tr>
         <td class="strong"><a href="#bcddd9702d67140f6e887ee2710166b4cbe7ba6b" class="src_link" title="lib/account.rb">lib/account.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>24</td>
+        <td>25</td>
         <td>13</td>
         <td>13</td>
         <td>0</td>
@@ -197,7 +197,7 @@
         <li class="covered" data-hits="5" data-linenumber="15">
           <span class="hits">5</span>
           
-          <code class="ruby">    @transactions &lt;&lt; [money, date]</code>
+          <code class="ruby">    @transactions &lt;&lt; {:deposit =&gt; [date, money, balance]}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
@@ -224,31 +224,37 @@
           <code class="ruby">    return &#39;Insufficient funds.&#39; unless money &lt;= @balance</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="20">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    @balance -= money</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="21">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    @transactions &lt;&lt; [money,date]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="covered" data-hits="2" data-linenumber="21">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    @balance -= money</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="22">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    @transactions &lt;&lt; {:withdrawal =&gt; [date, money, balance]}</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="24">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="25">
           
           
           <code class="ruby">end</code>
@@ -360,7 +366,7 @@
         <li class="covered" data-hits="1" data-linenumber="15">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(account.transactions).to eq [[500, &#39;18/11/19&#39;]]</code>
+          <code class="ruby">    expect(account.transactions).to eq [{:deposit=&gt; [&#39;18/11/19&#39;, 500, 500]}]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
@@ -517,7 +523,7 @@
         <li class="covered" data-hits="1" data-linenumber="16">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(account.transactions).to include [100, &quot;19/11/2019&quot;]</code>
+          <code class="ruby">    expect(account.transactions).to eq [{:deposit =&gt; [&quot;18/11/2019&quot;, 500, 500]}, {:withdrawal =&gt; [&quot;19/11/2019&quot;, 100, 400]}]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">

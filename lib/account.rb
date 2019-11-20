@@ -12,14 +12,14 @@ class Account
     return 'Your deposit must be more than 0.' unless money.positive?
 
     @balance += money
-    @transactions << [money, date]
+    @transactions << { :deposit => [date, money, balance] }
   end
 
   def withdrawal(money, date)
     return 'Insufficient funds.' unless money <= @balance
 
     @balance -= money
-    @transactions << [money, date]
+    @transactions << { :withdrawal => [date, money, balance] }
 
   end
 end
