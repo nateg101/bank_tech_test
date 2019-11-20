@@ -1,6 +1,7 @@
 require 'account'
 
 describe 'making a withdrawal' do
+
   it 'should update the balance correctly' do
     account = Account.new
     account.deposit(500, "18/11/2019")
@@ -13,6 +14,12 @@ describe 'making a withdrawal' do
     account.deposit(500, "18/11/2019")
     account.withdrawal(100, "19/11/2019")
     expect(account.transactions).to include [100, "19/11/2019"]
+  end
+
+  it 'raises an error if you withdraw more than the balance' do
+    account = Account.new
+    account.deposit(500, "18/11/2019")
+    expect(account.withdrawal(600, '19/11/19')).to eq 'Insufficient funds.'
   end
 
 end

@@ -17,6 +17,6 @@ describe ' making a deposit' do
 
   it 'raises an error message if trying to make a deposit >= 0' do
     account = Account.new
-    expect(account.deposit(-10, '18/11/19')).to eq 'Your deposit must be more than 0'
+    expect(account.deposit(-10, '18/11/19')).to eq 'Your deposit must be more than 0.'
   end
 end

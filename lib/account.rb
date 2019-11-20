@@ -9,15 +9,17 @@ class Account
   end
 
   def deposit(money, date)
-    return 'Your deposit must be more than 0' unless money.positive?
+    return 'Your deposit must be more than 0.' unless money.positive?
 
     @balance += money
     @transactions << [money, date]
   end
 
   def withdrawal(money, date)
+    return 'Insufficient funds.' unless money <= @balance
+
     @balance -= money
-    @transactions << [money,date]
+    @transactions << [money, date]
 
   end
 end
